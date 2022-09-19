@@ -30,9 +30,11 @@ def pre_image(image_path,model):
     transforms.Resize((32,32)),transforms.Normalize(mean,std)])
     # get normalized image
     img_normalized = transform_norm(img)
+    #print(img_normalized)
     img_normalized = img_normalized.unsqueeze_(0)
     # input = Variable(image_tensor)
     img_normalized = img_normalized.to(device)
+    print(img_normalized)
     print(img_normalized.shape)
     print(img_normalized.dtype)
     with torch.no_grad():
@@ -41,5 +43,5 @@ def pre_image(image_path,model):
         noo, preds = torch.max(output.data, 1)
         return preds
 
-predict = pre_image("/Users/lihongfei/Desktop/CS231n/input/GTSRB_Test/Images/00021.ppm",model)
+predict =pre_image("/Users/lihongfei/Desktop/CS231n/input/GTSRB_Final_Test_Images/GTSRB/Final_Test/images/00000.ppm",model)
 print(predict)
